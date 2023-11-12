@@ -2,6 +2,7 @@
   "name": "my-webpack-project",
   "packageManager": "yarn@4.0.0",
   "dependencies": {
+    "@icbmike/game-lobby-backend": "^0.4.0",
     "@icbmike/mike-effect": "^0.1.0",
     "@reduxjs/toolkit": "^1.9.7",
     "react": "^18.2.0",
@@ -16,7 +17,9 @@
     "@webpack-cli/generators": "^3.0.7",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
+    "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
     "ts-loader": "^9.5.0",
     "typescript": "^5.2.2",
     "webpack": "^5.89.0",
