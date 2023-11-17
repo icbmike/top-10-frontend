@@ -4,15 +4,21 @@ import { createBrowserRouter } from "react-router-dom";
 import { IndexRoute } from "./routes/IndexRoute";
 import { LobbyRoute } from "./routes/LobbyRoute";
 import { NotFoundRoute } from "./routes/NotFoundRoute";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 import "./App.scss";
 
-export const App = () => {
-  const router = createBrowserRouter([
-    { path: '/', element: <IndexRoute /> },
-    { path: '/lobby', element: <LobbyRoute /> },
-    { path: '*', element: <NotFoundRoute /> }
-  ]);
+const router = createBrowserRouter([
+  { path: '/', element: <IndexRoute /> },
+  { path: '/lobby/:lobbyCode', element: <LobbyRoute /> },
+  { path: '*', element: <NotFoundRoute /> }
+]);
 
-  return <RouterProvider router={router} />
-}
+export const navigate = router.navigate;
+
+export const App = () => (
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+)

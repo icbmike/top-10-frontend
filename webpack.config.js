@@ -9,6 +9,8 @@ const config = {
     entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
+        filename: 'main.js',
+        publicPath: '/'
     },
     devServer: {
         open: true,
@@ -17,7 +19,7 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'index.html',
+            template: './index.html',
         }),
 
         // Add your plugins here

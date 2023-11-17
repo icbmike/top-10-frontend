@@ -1,6 +1,6 @@
 import { Lobby, Player } from "@icbmike/game-lobby-backend";
 import { createReducer } from "@reduxjs/toolkit";
-import { joinLobby, joinLobbyDone, joinLobbyFailed } from "./actions";
+import { joinLobby, joinLobbyDone, joinLobbyFailed, loadLobby } from "./actions";
 
 interface IState {
   lobby?: Lobby
@@ -23,4 +23,8 @@ export const lobbyReducer = createReducer(initialState, builder => builder
   .addCase(joinLobbyFailed, state => ({
     isLoadingLobby: false
   }))
+  .addCase(loadLobby, state => ({
+    isLoadingLobby: true
+  })
+  )
 );

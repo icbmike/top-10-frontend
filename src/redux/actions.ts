@@ -15,4 +15,14 @@ export const createLoadingActions = <TLoadPayload = void, TDonePayload = void, T
   ]
 }
 
-export const [joinLobby, joinLobbyDone, joinLobbyFailed] = createLoadingActions<{ lobbyCode: string }, { lobby: Lobby }>('joinLobby');
+export const [
+  joinLobby,
+  joinLobbyDone,
+  joinLobbyFailed
+] = createLoadingActions<{ lobbyCode: string }, { lobby: Lobby }>('joinLobby');
+
+export const [
+  loadLobby,
+  loadLobbyDone,
+  loadLobbyFailed
+] = createLoadingActions<{ lobbyCode: string }, { lobby: Lobby }>('loadLobby');
