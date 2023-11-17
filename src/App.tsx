@@ -19,6 +19,8 @@ export const navigate = router.navigate;
 
 export const App = () => (
   <Provider store={store}>
+    <h1>Top 10</h1>
+
     <RouterProvider router={router} />
   </Provider>
 )
