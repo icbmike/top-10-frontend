@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { loadLobby } from "../redux/actions";
-import { selectIsLobbyLoading, selectLobby, selectPlayer } from "../redux/selectors";
-import { Loader } from "../components/Loader";
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadLobby } from '../redux/actions';
+import { selectIsLobbyLoading, selectLobby, selectPlayer } from '../redux/selectors';
+import { Loader } from '../components/Loader';
 
 export const LobbyRoute = () => {
   const dispatch = useDispatch();
@@ -14,11 +14,14 @@ export const LobbyRoute = () => {
   const player = useSelector(selectPlayer);
 
   useEffect(() => {
-    dispatch(loadLobby({ lobbyCode }))
+    dispatch(loadLobby({ lobbyCode }));
   }, [dispatch, lobbyCode]);
 
   return <>
     <h2>Lobby {lobbyCode}</h2>
-    {isLobbyLoading ? <div style={{ display: 'flex', justifyContent: 'center' }}><Loader /></div> : null}
-  </>
+    {isLobbyLoading 
+      ?<div style={{ display: 'flex', justifyContent: 'center' }}><Loader /></div> 
+      : null
+    }
+  </>;
 };

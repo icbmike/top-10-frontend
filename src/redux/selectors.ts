@@ -1,4 +1,4 @@
-import { TState } from "./store";
+import { TState } from './store';
 
 export const selectIsLobbyLoading = (state: TState) => state.lobby.isLoadingLobby;
 export const selectLobby = (state: TState) => state.lobby.lobby;

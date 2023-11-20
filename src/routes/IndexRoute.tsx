@@ -1,6 +1,6 @@
-import React, { useState } from "react"
-import { navigate } from "../App";
-import { Button } from "../components/Button";
+import React, { useState } from 'react';
+import { navigate } from '../App';
+import { Button } from '../components/Button';
 
 export const IndexRoute = () => {
 
@@ -14,9 +14,14 @@ export const IndexRoute = () => {
     const newVal = val.toUpperCase().replace(/[^A-Z0-9]/, '');
 
     setLobbyCode(newVal);
-  }
+  };
 
-  return <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+  return <div style={{ 
+    display: 'flex', 
+    flexDirection: 'column', 
+    justifyContent: 'center', 
+    alignItems: 'center' 
+  }}>
     <Button href="/newLobby" style={{ marginBottom: '8px' }}>New Lobby</Button>
 
     <span>
@@ -30,5 +35,5 @@ export const IndexRoute = () => {
 
       <Button onClick={onJoinLobbyClick}>Join Lobby</Button>
     </span>
-  </div>
-}
+  </div>;
+};

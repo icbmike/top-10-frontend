@@ -1,6 +1,13 @@
-import { createMikeEffect } from "@icbmike/mike-effect";
-import { joinLobby, joinLobbyDone, joinLobbyFailed, loadLobby, loadLobbyDone, loadLobbyFailed } from "./actions";
-import { Lobby } from "@icbmike/game-lobby-backend";
+import { createMikeEffect } from '@icbmike/mike-effect';
+import { 
+  joinLobby, 
+  joinLobbyDone, 
+  joinLobbyFailed, 
+  loadLobby, 
+  loadLobbyDone, 
+  loadLobbyFailed 
+} from './actions';
+import { Lobby } from '@icbmike/game-lobby-backend';
 
 export const joinLobbyEffect = createMikeEffect(joinLobby, async ({ payload }) => {
   const response = await fetch(`/api/lobbies/${payload.lobbyCode}`, {

@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react"
+import React, { ReactNode } from 'react';
 
-import { NavLink } from "react-router-dom"
+import { NavLink } from 'react-router-dom';
 
-import "./Button.scss"
+import './Button.scss';
 
 interface IProps {
   children: ReactNode
@@ -12,10 +12,26 @@ interface IProps {
   style?: React.CSSProperties
 }
 
-export const Button = ({ children, href, onClick, className, style }: IProps) => {
+export const Button = ({ 
+  children, 
+  href, 
+  onClick, 
+  className, 
+  style 
+}: IProps) => {
   if (href) {
-    return <NavLink to={href} style={style} className={`button button--isLink ${className}`}>{children}</NavLink>
+    return <NavLink 
+      to={href} 
+      style={style} 
+      className={`button button--isLink ${className}`}>
+      {children}
+    </NavLink>;
   }
 
-  return <button style={style} className={`button button ${className}`} onClick={onClick}>{children}</button>
-}
+  return <button 
+    style={style} 
+    className={`button button ${className}`} 
+    onClick={onClick}>
+    {children}
+  </button>;
+};
