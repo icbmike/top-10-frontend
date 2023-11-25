@@ -11,7 +11,7 @@ import {
   loadLobbyFailed,
 } from './actions';
 import { Lobby } from '@icbmike/game-lobby-backend';
-import { get, post } from '../fetchHelpers';
+import { get, post } from '../helpers/api.helpers';
 
 export const joinLobbyEffect = createMikeEffect(
   joinLobby,
@@ -29,12 +29,9 @@ export const loadLobbyEffect = createMikeEffect(
   async ({ payload }) => {
     const response = await get<Lobby>(`/api/lobbies/${payload.lobbyCode}`);
 
-    if (response.ok) {
-      const lobby = response.data;
-      return loadLobbyDone({ lobby });
-    }
-
-    return loadLobbyFailed(response.error);
+    return response.ok
+      ? loadLobbyDone({ lobby: response.data })
+      : loadLobbyFailed(response.error);
   },
 );
 
