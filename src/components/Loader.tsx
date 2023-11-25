@@ -1,7 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import './Loader.scss';
+import "./Loader.scss";
 
 export const Loader = () => {
-  return <div className="lds-heart"><div></div></div>;
+  return (
+    <div className="lds-heart">
+      <div></div>
+    </div>
+  );
 };

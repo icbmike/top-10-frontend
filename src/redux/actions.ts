@@ -1,17 +1,17 @@
-import { Lobby } from '@icbmike/game-lobby-backend';
-import { PayloadActionCreator, createAction } from '@reduxjs/toolkit';
+import { Lobby } from "@icbmike/game-lobby-backend";
+import { PayloadActionCreator, createAction } from "@reduxjs/toolkit";
 
 export const createLoadingActions = <
-  TLoadPayload = void, 
-  TDonePayload = void, 
-  TFailedPayload = Error
->(type: string):
-  [
-    PayloadActionCreator<TLoadPayload>,
-    PayloadActionCreator<TDonePayload>,
-    PayloadActionCreator<TFailedPayload>
-  ] => {
-
+  TLoadPayload = void,
+  TDonePayload = void,
+  TFailedPayload = Error,
+>(
+  type: string,
+): [
+  PayloadActionCreator<TLoadPayload>,
+  PayloadActionCreator<TDonePayload>,
+  PayloadActionCreator<TFailedPayload>,
+] => {
   return [
     createAction<TLoadPayload>(type),
     createAction<TDonePayload>(`${type}/DONE`),
@@ -19,14 +19,15 @@ export const createLoadingActions = <
   ];
 };
 
-export const [
-  joinLobby,
-  joinLobbyDone,
-  joinLobbyFailed
-] = createLoadingActions<{ lobbyCode: string }, { lobby: Lobby }>('joinLobby');
+export const [joinLobby, joinLobbyDone, joinLobbyFailed] = createLoadingActions<
+  { lobbyCode: string },
+  { lobby: Lobby }
+>("joinLobby");
 
-export const [
-  loadLobby,
-  loadLobbyDone,
-  loadLobbyFailed
-] = createLoadingActions<{ lobbyCode: string }, { lobby: Lobby }>('loadLobby');
+export const [loadLobby, loadLobbyDone, loadLobbyFailed] = createLoadingActions<
+  { lobbyCode: string },
+  { lobby: Lobby }
+>("loadLobby");
+
+export const [createLobby, createLobbyDone, createLobbyFailed] =
+  createLoadingActions<{ lobbySize: number }, { lobby: Lobby }>("createLobby");
