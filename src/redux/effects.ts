@@ -10,17 +10,25 @@ import {
   loadLobbyDone,
   loadLobbyFailed,
 } from './actions';
-import { Lobby } from '@icbmike/game-lobby-backend';
+import { Lobby, Player } from '@icbmike/game-lobby-backend';
 import { get, post } from '../helpers/api.helpers';
 import { navigate } from '../App';
 
 export const joinLobbyEffect = createMikeEffect(
   joinLobby,
   async ({ payload }) => {
-    const response = await get<Lobby>(`/api/lobbies/${payload.lobbyCode}`);
+    const response = await post<{ lobby: Lobby; newPlayer: Player }>(
+      `/api/lobbies/${payload.lobbyCode}/players`,
+      {
+        name: payload.name,
+      },
+    );
 
     return response.ok
-      ? joinLobbyDone({ lobby: response.data })
+      ? joinLobbyDone({
+          lobby: response.data.lobby,
+          player: response.data.newPlayer,
+        })
       : joinLobbyFailed(response.error);
   },
 );

@@ -1,4 +1,4 @@
-import { Lobby } from '@icbmike/game-lobby-backend';
+import { Lobby, Player } from '@icbmike/game-lobby-backend';
 import { PayloadActionCreator, createAction } from '@reduxjs/toolkit';
 
 export const createLoadingActions = <
@@ -20,8 +20,8 @@ export const createLoadingActions = <
 };
 
 export const [joinLobby, joinLobbyDone, joinLobbyFailed] = createLoadingActions<
-  { lobbyCode: string },
-  { lobby: Lobby }
+  { lobbyCode: string; name: string },
+  { lobby: Lobby; player: Player }
 >('joinLobby');
 
 export const [loadLobby, loadLobbyDone, loadLobbyFailed] = createLoadingActions<

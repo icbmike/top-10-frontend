@@ -52,5 +52,13 @@ const sendRequest = async <TResponseData, TRequestPayload = void>(
 export const post = <TResponse, TBody = object>(url: string, body?: TBody) =>
   sendRequest<TResponse, TBody>(url, 'POST', body);
 
+export const put = <TResponse, TBody = object>(url: string, body?: TBody) =>
+  sendRequest<TResponse, TBody>(url, 'PUT', body);
+
+export const deleteRequest = <TResponse, TBody = object>(
+  url: string,
+  body?: TBody,
+) => sendRequest<TResponse, TBody>(url, 'DELETE', body);
+
 export const get = <TResponseData>(url: string) =>
   sendRequest<TResponseData>(url, 'GET');

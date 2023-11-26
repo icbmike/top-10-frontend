@@ -29,4 +29,8 @@ h3 {
   margin-bottom: 0.8em;
 }
 
+ul, ol {
+  list-style-position: inside;
+}
+
 @import "./components/Input.scss";

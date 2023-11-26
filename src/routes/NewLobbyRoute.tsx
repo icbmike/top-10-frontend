@@ -16,7 +16,7 @@ export const NewLobbyRoute = () => {
     <>
       <input
         className="input"
-        style={{ marginRight: '8px' }}
+        style={{ marginRight: '8px', width: '80px' }}
         type="number"
         max={20}
         min={2}
