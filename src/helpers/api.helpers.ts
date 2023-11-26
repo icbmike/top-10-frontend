@@ -50,7 +50,7 @@ const sendRequest = async <TResponseData, TRequestPayload = void>(
 };
 
 export const post = <TResponse, TBody = object>(url: string, body?: TBody) =>
-  sendRequest<TResponse, TBody>('POST', url, body);
+  sendRequest<TResponse, TBody>(url, 'POST', body);
 
 export const get = <TResponseData>(url: string) =>
   sendRequest<TResponseData>(url, 'GET');

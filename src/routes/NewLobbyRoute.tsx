@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { Button } from "../components/Button";
-import { useDispatch } from "react-redux";
-import { createLobby } from "../redux/actions";
+import { Button } from '../components/Button';
+import { useDispatch } from 'react-redux';
+import { createLobby } from '../redux/actions';
 
 export const NewLobbyRoute = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export const NewLobbyRoute = () => {
     <>
       <input
         className="input"
-        style={{ marginRight: "8px" }}
+        style={{ marginRight: '8px' }}
         type="number"
         max={20}
         min={2}

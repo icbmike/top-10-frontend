@@ -12,6 +12,7 @@ import {
 } from './actions';
 import { Lobby } from '@icbmike/game-lobby-backend';
 import { get, post } from '../helpers/api.helpers';
+import { navigate } from '../App';
 
 export const joinLobbyEffect = createMikeEffect(
   joinLobby,
@@ -45,5 +46,12 @@ export const createLobbyEffect = createMikeEffect(
     return response.ok
       ? createLobbyDone({ lobby: response.data })
       : createLobbyFailed(response.error);
+  },
+);
+
+export const createLobbyDoneEffect = createMikeEffect(
+  createLobbyDone,
+  async ({ payload }) => {
+    return navigate(`/lobby/${payload.lobby.code}`);
   },
 );

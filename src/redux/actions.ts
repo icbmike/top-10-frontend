@@ -1,5 +1,5 @@
-import { Lobby } from "@icbmike/game-lobby-backend";
-import { PayloadActionCreator, createAction } from "@reduxjs/toolkit";
+import { Lobby } from '@icbmike/game-lobby-backend';
+import { PayloadActionCreator, createAction } from '@reduxjs/toolkit';
 
 export const createLoadingActions = <
   TLoadPayload = void,
@@ -22,12 +22,12 @@ export const createLoadingActions = <
 export const [joinLobby, joinLobbyDone, joinLobbyFailed] = createLoadingActions<
   { lobbyCode: string },
   { lobby: Lobby }
->("joinLobby");
+>('joinLobby');
 
 export const [loadLobby, loadLobbyDone, loadLobbyFailed] = createLoadingActions<
   { lobbyCode: string },
   { lobby: Lobby }
->("loadLobby");
+>('loadLobby');
 
 export const [createLobby, createLobbyDone, createLobbyFailed] =
-  createLoadingActions<{ lobbySize: number }, { lobby: Lobby }>("createLobby");
+  createLoadingActions<{ lobbySize: number }, { lobby: Lobby }>('createLobby');
