@@ -9,10 +9,12 @@ import {
   loadLobby,
   loadLobbyDone,
   loadLobbyFailed,
+  restoreActiveLobby,
 } from './actions';
 import { Lobby, Player } from '@icbmike/game-lobby-backend';
 import { get, post } from '../helpers/api.helpers';
 import { navigate } from '../App';
+import { lobbyCodeStorageKey, playerStorageKey } from '../constants';
 
 export const joinLobbyEffect = createMikeEffect(
   joinLobby,
@@ -24,12 +26,20 @@ export const joinLobbyEffect = createMikeEffect(
       },
     );
 
-    return response.ok
-      ? joinLobbyDone({
-          lobby: response.data.lobby,
-          player: response.data.newPlayer,
-        })
-      : joinLobbyFailed(response.error);
+    if (response.ok) {
+      localStorage.setItem(lobbyCodeStorageKey, payload.lobbyCode);
+      localStorage.setItem(
+        playerStorageKey,
+        JSON.stringify(response.data.newPlayer),
+      );
+
+      return joinLobbyDone({
+        lobby: response.data.lobby,
+        player: response.data.newPlayer,
+      });
+    }
+
+    return joinLobbyFailed(response.error);
   },
 );
 
@@ -61,5 +71,16 @@ export const createLobbyDoneEffect = createMikeEffect(
   createLobbyDone,
   async ({ payload }) => {
     return navigate(`/lobby/${payload.lobby.code}`);
+  },
+);
+
+export const restoreLobbyEffect = createMikeEffect(
+  restoreActiveLobby,
+  async ({ payload }) => {
+    const { lobbyCode } = payload;
+
+    if (window.location.pathname !== `/lobby/${lobbyCode}`) {
+      await navigate(`/lobby/${lobbyCode}`);
+    }
   },
 );

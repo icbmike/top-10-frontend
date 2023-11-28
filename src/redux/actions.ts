@@ -31,3 +31,8 @@ export const [loadLobby, loadLobbyDone, loadLobbyFailed] = createLoadingActions<
 
 export const [createLobby, createLobbyDone, createLobbyFailed] =
   createLoadingActions<{ lobbySize: number }, { lobby: Lobby }>('createLobby');
+
+export const restoreActiveLobby = createAction<{
+  lobbyCode: string;
+  player: Player;
+}>('restoreLobby');

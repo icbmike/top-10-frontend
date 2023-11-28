@@ -10,6 +10,7 @@ import {
   loadLobby,
   loadLobbyDone,
   loadLobbyFailed,
+  restoreActiveLobby,
 } from './actions';
 
 interface IState {
@@ -66,5 +67,9 @@ export const lobbyReducer = createReducer(initialState, (builder) =>
     .addCase(createLobbyFailed, (state) => ({
       ...state,
       isCreatingLobby: false,
+    }))
+    .addCase(restoreActiveLobby, (state, { payload }) => ({
+      ...state,
+      player: payload.player,
     })),
 );
